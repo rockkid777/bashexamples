@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ $# -lt 1 ]
+then
+    echo "No task given." >&2
+    exit 1
+fi
+
 function msg {
     echo "no one can stop us right now..."
 }
@@ -10,7 +16,7 @@ function terminate {
     exit
 }
 
-bash task1.sh &
+bash $1 &
 task1PID=$!
 
 trap msg SIGINT
